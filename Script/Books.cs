@@ -10,7 +10,11 @@ namespace Book.info
         public string Name { get; set; }
         public string Author { get; set; }
         public string Image { get; set; }
-        public Details Description { get; set; }
+        public bool Trendy { get; set; }
+       
+        public bool New { get; set; }
+        public bool BestOfTheWeek { get; set; }
+        public ICollection<Details> Description { get; set; }
         public double Price { get; set; }
 
 

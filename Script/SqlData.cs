@@ -10,8 +10,45 @@ namespace Books.Data
         private readonly AppDbContext app;
         public SqlData(AppDbContext app)
         {
-            app = this.app;
+            this.app=app;
         }
+
+        public IEnumerable<Book.info.Books> GetBooks { 
+            get
+            {
+                var query = from r in app.Books
+                            orderby r.Id
+                            select r;
+                return query;
+            }
+        }
+
+        public IEnumerable<Book.info.Books> BookOftheweek {
+            get
+
+            {
+                return app.Books.Where(r => r.BestOfTheWeek == true);
+            }
+        }
+
+        public IEnumerable<Book.info.Books> TrendyBooks
+        {
+            get
+            {
+                return app.Books.Where(r => r.Trendy == true);
+            }
+        }
+
+        public IEnumerable<Book.info.Books> Newbooks
+        {
+            get
+            {
+                return app.Books.Where(r => r.New == true);
+            }
+        }
+
+       
+
         public Book.info.Books Add(Book.info.Books added)
         {
             app.Add(added);
@@ -33,24 +70,21 @@ namespace Books.Data
             var query = GetId(id);
             if (query != null)
             {
-                app.Book.Remove(query);
+                app.Books.Remove(query);
             }
             return query;
         }
 
-        public IEnumerable<Book.info.Books> GetAllData()
-        {
-            return app.Book.OrderBy(r => r.Name);
-        }
+       
 
         public int GetCount()
         {
-            return app.Book.Count();
+            return app.Books.Count();
         }
 
         public IEnumerable<Book.info.Books> GetData(string name)
         {
-            var query = from a in app.Book
+            var query = from a in app.Books
                         where string.IsNullOrWhiteSpace(name) || a.Name.StartsWith(name)
                         orderby a.Name
                         select a;
@@ -59,12 +93,12 @@ namespace Books.Data
 
         public Book.info.Books GetId(int id)
         {
-            return app.Book.Find(id);
+            return app.Books.Find(id);
         }
 
         public Book.info.Books Update(Book.info.Books update)
         {
-            var query = app.Book.Attach(update);
+            var query = app.Books.Attach(update);
             query.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             return update;
         }
