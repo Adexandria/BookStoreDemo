@@ -10,7 +10,7 @@ namespace DemoBookstore.Pages
 {
     public class EditModel : PageModel
     {   public Book.info.Books Books { get; set; }
-        private readonly IData data { get; set; }
+        private readonly IData data;
          public EditModel(IData data)
         {
             this.data = data;
