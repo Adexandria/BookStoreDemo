@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace DemoBookstore.Pages
 {
     public class EditModel : PageModel
+<<<<<<< HEAD
     {
         [BindProperty]
         public Book.info.Books Books { get; set; }
@@ -17,6 +18,11 @@ namespace DemoBookstore.Pages
         public Book.info.Details Details {get; set;}
         private readonly IDetails data1;
         public EditModel(IData data, IDetails data1)
+=======
+    {   public Book.info.Books Books { get; set; }
+        private readonly IData data;
+         public EditModel(IData data)
+>>>>>>> 5a20f848989b7beffed666394f99fb0c0f77d87f
         {
             this.data = data;
             this.data1 = data1;
