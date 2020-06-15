@@ -21,13 +21,15 @@
                         @book.Author
                     </h5>
                     <a asp-page="./List" asp-route-id="@book.Id" class="btn btn-outline-primary"> more Details</a>
+                    <a asp-page="./Edit" asp-route-id="@book.Id" class="btn btn-outline-primary"> Edit</a>
+                    <a asp-page="./Add" asp-route-id="@book.Id" class="btn btn-outline-primary"> Delete</a>
                     <span class="success">new</span>
                 </div>
             </td>
         </tc>
     }
 </table>
-<a asp-page="./More" button="btn btn-primary" class="text-md-center">More</a>
+
 
 <style>
 

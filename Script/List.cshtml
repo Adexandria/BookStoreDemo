@@ -2,7 +2,7 @@
 @model DemoBookstore.Pages.ListModel
 @{
 }
-    <a asp-page="./Detail" class="text-md-left"> New</a>
+<a asp-page="./Detail" class="text-md-left"> New</a>
 <div class="text-md-right" style="width:40%">
 
 
@@ -12,7 +12,9 @@
         @Model.Paper.Name
     </h4>
 </div>
-<p class="text-md-right">
+
+
+<p class="text-md-center">
     @Model.Books.Description
     <h6>
         @Model.Books.Editorial
@@ -29,11 +31,14 @@
 
             <h4 class="text-md-right">
                 @Model.Books.Ratings
-
+                <a asp-page="./Add" asp-route-id="@Model.Books.Id" class="btn btn-outline-primary"> Delete</a>
+                <a asp-page="./Edit" asp-route-id="@Model.Paper.Id" class="btn btn-outline-primary"> Edit</a>
 
             </h4>
         </td>
     </tc>
 
 </table>
+
+
 
