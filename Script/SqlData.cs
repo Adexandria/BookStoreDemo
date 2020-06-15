@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,7 +100,7 @@ namespace Books.Data
         public Book.info.Books Update(Book.info.Books update)
         {
             var query = app.Books.Attach(update);
-            query.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            query.State = EntityState.Modified;
             return update;
         }
     }

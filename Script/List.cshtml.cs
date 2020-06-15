@@ -23,7 +23,11 @@ namespace DemoBookstore.Pages
         {
             Books = data.GetDetails(id);
             Paper = data1.GetId(id);
-            if (Books == null)
+            if(Books == null)
+            {
+                return RedirectToPage("./Addlist");
+            }
+            if (Paper == null)
             {
                return RedirectToPage("./Notfound");
             }
